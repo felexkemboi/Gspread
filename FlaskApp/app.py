@@ -12,8 +12,9 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name('hassan.json', sc
 #gc = gspread.authorize(credentials)
 
 #wks = gc.open("Where is the money Lebowski?").sheet1
-
-
+serial = []
+commodity = []
+amount = []
 
 app = Flask(__name__)
 from flaskext.mysql import MySQL
@@ -35,7 +36,7 @@ conn = mysql.connect()
 
 cursor =conn.cursor()
 
-sql = "SELECT * FROM lori"
+sql = "SELECT * FROM mzigo"
 
 cursor.execute(sql)
 
@@ -52,7 +53,8 @@ def connection():
 	
 
 	#cursor = db.cursor()
-	sql = "SELECT * FROM lori" 
+	
+	#sql = "SELECT * FROM lori" 
 	"""
 	if mysql.connect():
 		return "hey connected"
@@ -81,12 +83,35 @@ def connect():
 		#index = 1
 		#worksheet.insert_row(row,index)
 		for record in results:
-			"""serial = record[0]
-			commodity = record[1]
-			amount = record[2]"""
-			col = record
-			row = record
-			worksheet.update_cell(row, col, record)
+			serial.append(record[0])
+			commodity.append(record[1])
+			amount.append(record[2])
+
+			#col = record   
+			#update_cell(row, col, val)
+			#row = record
+			#worksheet.update_cell(row, col, record)
+
+			i = 2
+			for element in serial:
+  				#print(element)
+  				worksheet.update_cell(i, 1, element)
+  				i = i +1
+
+
+			j = 2
+			for element in commodity:
+  				#p2rint(element)
+  				worksheet.update_cell(j, 1, element)
+  				i = i +1
+
+
+			k = 2
+			for element in amount:
+  				#print(element)
+  				worksheet.update_cell(k, 1, element)
+  				i = i +1
+  
 	return "i like what i am seeing"
 
 
