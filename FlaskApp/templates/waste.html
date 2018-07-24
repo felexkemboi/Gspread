@@ -1,0 +1,54 @@
+	
+	#return render_template('index.html', results=results)
+"""
+@app.route("/userinput")
+def connection():
+	#if request.method
+	sql = "INSERT INTO lori (`serial`, `commodity`, `amount`) VALUES (serial, commodity, amount);" 
+
+	"""
+	"""
+	if mysql.connect():
+		return "hey connected"
+	else:
+		return "not connected"
+		"""
+		"""
+	cursor.execute(sql)
+	db.commit()
+	print("Successfully added")
+	#results = cursor.fetchall()
+
+	return render_template('index.html',results=results)
+
+	
+	#return render_template('index.html', results=results)
+    
+
+@app.route("/")
+def main():
+    return render_template('home.html')
+
+
+
+
+if __name__ == "__main__":
+    app.run()
+
+"""
+"""
+from flask import Flask, request, render_template
+import pymysql
+
+db = pymysql.connect("localhost", "username", "password", "database")
+
+app = Flask(__name__)
+api = Api(app)
+
+@app.route('/')
+def someName():
+    cursor = db.cursor()
+    sql = "SELECT * FROM table"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    return render_template('index.html', results=results)

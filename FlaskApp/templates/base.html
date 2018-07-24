@@ -1,0 +1,67 @@
+<!--load the path to our static files-->
+<!--{% load static %}-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Beats{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Peralta" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+   {% block stylesheet %}
+     <style type="text/css">
+        .body2{ 
+        /*background: url('{% static "images/musica.jpeg" %}') /*no-repeat center center fixed;*/
+        /*-webkit-background-size: cover;
+        -moz-background-size: cover;
+         -o-background-size: cover;*/
+        /* background-size: cover;
+         background-size: 1800px 900px;
+         background-repeat: no-repeat;
+         background-position: top;
+        background-attachment: fixed;*/
+        background-color: whitesmoke;
+        }
+    </style>
+{% endblock%}
+
+  </head>
+  <body class="body2">
+    {% block body %}  
+    <!-- HERE -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<a class="navbar-brand" href="{% url 'shop' %}">logo</a>
+                  <ul class="navbar-nav mr-auto">
+                   <!-- <li class="nav-item"><a href="#">New Post</a></li>&nbsp;&nbsp;
+                    <li class="nav-item"><a href="#">Add eBook</a></li>&nbsp;&nbsp;-->
+				</ul>
+				<link href="https://fonts.googleapis.com/css?family=Peralta" rel="stylesheet">
+		        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		        <link rel="stylesheet" href="{% static 'css/app.css' %}">
+				<button class="navbar-toggler" type="button" data-toggle="collapse"  data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="mainMenu">
+					<ul class="navbar-nav ml-auto">
+					    <li class="nav-item"><a href="{% url 'booksession' %}" class="btn btn-outline-secondary">
+					     <span class="glyphicon glyphicon-cd"></span>&nbsp;Book Session</a></li>
+						<li class="nav-item"><a href="{% url 'allbeats' %}"  class="btn btn-outline-secondary  ml-2">Buy</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+      <div class="container">
+        <!--{% block breadcrumb %}
+            
+        {% endblock %}-->
+        <!--<ol class="breadcrumb my-4">--> 
+        {% block content %}
+        {% endblock %}
+      </div>
+    {% endblock body %}  <!-- AND HERE -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
