@@ -75,8 +75,8 @@ def connect():
 	gc = gspread.authorize(credentials)
 	if gspread.authorize(credentials):
 		spreadsheet = gc.open("Hassan")
-		worksheet = spreadsheet.add_worksheet(title="serials", rows="100", cols="3")
-		#worksheet = spreadsheet.worksheet("cargo")
+		#worksheet = spreadsheet.add_worksheet(title="serials", rows="100", cols="3")
+		worksheet = spreadsheet.worksheet("cargo")
 		#row = ["Serial","Commodity","Amount"]
 		#index = 1
 		#worksheet.insert_row(row,index)
@@ -87,6 +87,7 @@ def connect():
 			col = record
 			row = record
 			worksheet.update_cell(row, col, record)
+	return "i like what i am seeing"
 
 
 
